@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: () { },
+          onPressed: () {},
           tooltip: 'Increment',
           child: Icon(Icons.add),
           elevation: 2.0,
