@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:meta/meta.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key key }) : super(key: key);
   @override
@@ -40,7 +41,7 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
           tabs: myTabs,
         ), 
          bottom:PreferredSize(
-          child:(Text('text')),
+          child:(SerachBar()),
           preferredSize:Size(80.0,50.0)
         )
       ),
@@ -50,6 +51,35 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
       //     return Center(child: Text(tab.text));
       //   }).toList(),
       // ),
+    );
+  }
+}
+
+class SerachBar extends StatelessWidget {
+  @override
+   Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      width: 350.00,
+      height: 40.00,
+      decoration:BoxDecoration(
+         color: Theme.of(context).backgroundColor,
+          borderRadius: BorderRadius.circular(4.0)),
+      child:  Row(
+        children: <Widget>[
+           Padding(
+            padding: EdgeInsets.only(right: 10.0, top: 3.0, left: 10.0),
+            child: Icon(Icons.search,
+                size: 24.0, color: Theme.of(context).accentColor),
+          ),
+      //     // new Expanded(
+      //       // child: new MaterialSearchInput(
+      //       //   placeholder: '搜索 flutter 组件',
+      //       //   // getResults: getResults,
+      //       // ),
+      //     // ),
+        ],
+      ),
     );
   }
 }
