@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:meta/meta.dart';
+import './guan.dart';
+import './find.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key key }) : super(key: key);
   @override
@@ -40,17 +42,21 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
           controller: _tabController,
           tabs: myTabs,
         ), 
-         bottom:PreferredSize(
+        bottom:PreferredSize(
           child:(SerachBar()),
           preferredSize:Size(80.0,50.0)
         )
       ),
-      // body: TabBarView(
-      //   controller: _tabController,
-      //   children: myTabs.map((Tab tab) {
-      //     return Center(child: Text(tab.text));
-      //   }).toList(),
-      // ),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          Guan(),
+          Find()
+        ],
+        // children: myTabs.map((Tab tab) {
+        //   return Center(child: Text(tab.text));
+        // }).toList(),
+      ),
     );
   }
 }
@@ -60,7 +66,6 @@ class SerachBar extends StatelessWidget {
    Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10.0),
-      width: 350.00,
       height: 40.00,
       decoration:BoxDecoration(
          color: Theme.of(context).backgroundColor,
