@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import './common/Footer.dart';
-import './views/home/main.dart';
-import './views/me.dart';
+import './views/Home/index.dart';
+import './views/Me/index.dart';
+
+// import './api/index.dart';
 
 void main()=>runApp(new MyApp());
 
@@ -21,7 +23,6 @@ class MyHomePage extends StatefulWidget {
   final String title;
   // @override
   _MyHomePageState createState() => new _MyHomePageState();
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
