@@ -3,7 +3,9 @@ import './guan.dart';
 import './find.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({ Key key }) : super(key: key);
+  const HomeScreen({ Key key,this.callback}):super(key: key);
+  final callback;
+  
   @override
   _MyTabbedPageState createState() => _MyTabbedPageState();
 }
@@ -23,11 +25,11 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
     _tabController = TabController(vsync: this, length: myTabs.length);
   }
 
- @override
- void dispose() {
-   _tabController.dispose();
-   super.dispose();
- }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,9 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
         leading:IconButton(
             icon: Icon(Icons.playlist_play),
             tooltip: 'Air it',
-            onPressed: () {},
+            onPressed: () {
+              widget.callback();
+            },
         ),
         title: TabBar(
           controller: _tabController,

@@ -7,7 +7,10 @@ Widget _build() {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(right: 30.0),
-          child:CircleAvatar(),
+          child:CircleAvatar(
+            radius: 35.0,
+          ),
+        
         ),
         Expanded(
           child:Column(
@@ -40,10 +43,10 @@ Widget _build() {
                     margin: EdgeInsets.only(right: 30.0,left: 20.0),
                      decoration:const BoxDecoration(
                       border:Border(
-                        top: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        bottom: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        left: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        right: BorderSide(width: 1.0, color: Colors.lightBlue),
+                        top: BorderSide(width: 1.0, color: Colors.black38),
+                        bottom: BorderSide(width: 1.0, color: Colors.black38),
+                        left: BorderSide(width: 1.0, color: Colors.black38),
+                        right: BorderSide(width: 1.0, color: Colors.black38),
                       ),
                       borderRadius: BorderRadius.all(
                          Radius.circular(10.0),
@@ -56,10 +59,10 @@ Widget _build() {
                     width: 55.0,
                     decoration:const BoxDecoration(
                       border:Border(
-                        top: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        bottom: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        left: BorderSide(width: 1.0, color: Colors.lightBlue),
-                        right: BorderSide(width: 1.0, color: Colors.lightBlue),
+                        top: BorderSide(width: 1.0, color: Colors.black38),
+                        bottom: BorderSide(width: 1.0, color: Colors.black38),
+                        left: BorderSide(width: 1.0, color: Colors.black38),
+                        right: BorderSide(width: 1.0, color: Colors.black38),
                       ),
                       borderRadius: BorderRadius.all(
                          Radius.circular(10.0),
@@ -78,20 +81,56 @@ Widget _build() {
   );
 }
 
+class Item{
+  Item({this.iconData,this.text});
+  String iconData;
+  String text;
+}
+List items = [
+  Item(iconData:'1',text:'2'),
+  Item(iconData:'3',text:'5'),
+  Item(iconData:'3',text:'6'),
+];
+Iterable _buildItem() {
+  return items
+  .map((n) => 
+    Container(
+      padding: EdgeInsets.only(left:6.0,right:6.0),
+      decoration: BoxDecoration(
+        border:Border(
+          left: BorderSide(width: 1.0, color: Colors.lightBlue),
+        )
+      ),
+      child: Row(
+        children: <Widget>[
+          Icon(Icons.group_work),
+          Text('解锁等级'),
+            Icon(Icons.navigate_next),
+        ],
+      ),
+    )
+  )
+  .toList();
+
+}
 class MeTop extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
       return Container(
-        padding:EdgeInsets.all(10.0),
+        padding:EdgeInsets.only(top:10.0,left:10.0,right: 10.0,bottom: 15.0),
+        height: 170.0,
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 1.0, color: Colors.black12),
+          )
+        ),
         child:Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             _build(),
             Row(
-              children: <Widget>[
-                Text('完善你的位置信息'),
-                Text('解锁等级'),
-                Text('成为会员')
-              ],
+              children: _buildItem(),
             ),
             Text('添加个人描述，可以让大家更好的认识你')
           ],

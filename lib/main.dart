@@ -28,16 +28,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _lastSelected = 0;
 
-   void _selectedTab(int index) {
+  void _selectedTab(int index) {
     setState(() {
       _lastSelected = index;
     });
   }
   List<Widget> views= List();
+
+  void test() {
+    print('oktest');
+  }
   @override 
   void initState() {
       views
-        ..add(HomeScreen())
+        ..add(HomeScreen(callback:test))
         ..add(MeScreen());
       super.initState();
     }
@@ -45,9 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
    @override
     Widget build(BuildContext context) {
       return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(widget.title),
-        // ),
         body: views[_lastSelected],
         bottomNavigationBar:FABBottomAppBar(
           centerItemText:'center',
@@ -69,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Icon(Icons.add),
           elevation: 2.0,
         ),
+        drawer: Drawer(),
         // floatingActionButton:_buildFab(context),
       );
     }
