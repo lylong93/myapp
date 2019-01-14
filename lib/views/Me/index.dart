@@ -20,15 +20,13 @@ class _MeScreenState extends State<MeScreen> {
       appBar: AppBar(
         elevation:0.0,
         iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor:Colors.white, 
-               
+        backgroundColor:Colors.white,          
         leading:IconButton(
             icon: Icon(Icons.playlist_play,color: Colors.black),
             onPressed: () {
               print(Scaffold);
               Scaffold.of(context).openDrawer();
             }
-
         ),
         title:Column(
             children:[
@@ -37,7 +35,6 @@ class _MeScreenState extends State<MeScreen> {
             ]
         )
       ),
-      
       body:Column(
         children:[
           MeTop(),

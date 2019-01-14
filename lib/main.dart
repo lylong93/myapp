@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import './common/Footer.dart';
 import './views/Home/index.dart';
 import './views/Me/index.dart';
+import './views/Msg/index.dart';
+import './views/Shop/index.dart';
 
-// import './api/index.dart';
+import './views/Drawer/index.dart';
 
 void main()=>runApp(new MyApp());
 
@@ -42,6 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
       views
         ..add(HomeScreen(callback:test))
+        ..add(ShopScreen())
+        ..add(MsgScreen())
         ..add(MeScreen());
       super.initState();
     }
@@ -70,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Icon(Icons.add),
           elevation: 2.0,
         ),
-        drawer: Drawer(),
+        drawer: DrawerSide(),
         // floatingActionButton:_buildFab(context),
       );
     }
