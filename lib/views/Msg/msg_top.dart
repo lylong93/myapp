@@ -1,46 +1,39 @@
 import 'package:flutter/material.dart';
-
+import 'package:myapp/views/Me/Class/index.dart';
 
 class MsgTop extends StatefulWidget {
-  const MsgTop({ Key key}):super(key: key);
 
+  final List <Object>items = [
+    ListItem(iconData:'1',title:'2'),
+    ListItem(iconData:'3',title:'5'),
+    ListItem(iconData:'3',title:'6'),
+  ];
+  
   @override
   _MsgTopState createState() => _MsgTopState();
-}
-
-class Item{
-  Item({this.iconData,this.text});
-  String iconData;
-  String text;
-}
-List items = [
-  Item(iconData:'1',text:'2'),
-  Item(iconData:'3',text:'5'),
-  Item(iconData:'3',text:'6'),
-];
-
-Iterable _buildItem() {
-  return items
-  .map((n) => 
-    Container(
-      padding: EdgeInsets.only(left:6.0,right:6.0),
-      decoration: BoxDecoration(
-      ),
-      child: Column(
-        children: <Widget>[
-          Icon(Icons.group_work,size: 50.0,),
-          Container(
-            margin: EdgeInsets.only(top:10.0),
-            child: Text('解锁等级',style: TextStyle(color: Colors.black,fontSize: 18.0)),
-          ),
-          
-        ],
-      ),
-    )
-  )
-  .toList();
+  
 }
 class _MsgTopState extends State<MsgTop> {
+  Iterable _buildItem() {
+    return widget.items
+    .map((n) => 
+      Container(
+        padding: EdgeInsets.only(left:6.0,right:6.0),
+        decoration: BoxDecoration(
+        ),
+        child: Column(
+          children: <Widget>[
+            Icon(Icons.group_work,size: 50.0,),
+            Container(
+              margin: EdgeInsets.only(top:10.0),
+              child: Text('解锁等级',style: TextStyle(color: Colors.black,fontSize: 18.0)),
+            ),
+          ],
+        ),
+      )
+    )
+    .toList();
+  }
   @override
   void initState() {
     super.initState();

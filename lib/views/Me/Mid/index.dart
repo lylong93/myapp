@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:myapp/components/card/index.dart';
 
-class LeftTab extends StatelessWidget{
+class MidTab extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
       return  GridView.count(
@@ -11,7 +11,7 @@ class LeftTab extends StatelessWidget{
         crossAxisCount: 2,
         childAspectRatio:0.8,
         children:[
-          Cardd()
+          Text('mid')
         ],
     );
     }

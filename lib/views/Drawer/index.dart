@@ -8,12 +8,10 @@ Widget _build (context){
       // padding: EdgeInsets.only(top: 7.0,bottom: 7.0),
       child:GestureDetector(
         onTap:() {
-          // print('oo');
           Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => FriendScreen()), 
-        );
-           
+            context,
+            MaterialPageRoute(builder: (context) => FriendScreen()), 
+          );
         },
         child:Row(
           children: <Widget>[

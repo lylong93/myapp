@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import './Left/index.dart';
+import './Mid/index.dart';
+import './Right/index.dart';
+
 class MeMain extends StatefulWidget {
   const MeMain({ Key key }) : super(key: key);
   @override
@@ -8,10 +11,17 @@ class MeMain extends StatefulWidget {
 }
 
 class _MeMainState extends State<MeMain> with SingleTickerProviderStateMixin {
-  final List<Tab> myTabs = <Tab>[
+  // 标签栏
+  final List<Tab> tabs = <Tab>[
     Tab(text: '笔记'),
     Tab(text: '收藏'),
     Tab(text: '赞过'),
+  ];
+  // 标签视图
+  final List<Widget> tabViews = [
+    LeftTab(),
+    MidTab(),
+    RightTab(),
   ];
 
   TabController _tabController;
@@ -19,13 +29,13 @@ class _MeMainState extends State<MeMain> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: myTabs.length);
+    _tabController = TabController(vsync: this, length: tabs.length);
   }
 
  @override
  void dispose() {
+    super.dispose();
    _tabController.dispose();
-   super.dispose();
  }
 
   @override
@@ -35,7 +45,6 @@ class _MeMainState extends State<MeMain> with SingleTickerProviderStateMixin {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(left:70.0,right:70.0),
-            // color: Colors.yellow,
             child: TabBar(
               indicatorPadding:EdgeInsets.all(6.0),
               indicatorSize:TabBarIndicatorSize.label,
@@ -47,15 +56,13 @@ class _MeMainState extends State<MeMain> with SingleTickerProviderStateMixin {
               indicatorColor:Colors.red,
               unselectedLabelColor: Colors.black26,
               controller: _tabController,
-              tabs: myTabs,
+              tabs: tabs,
            ),
           ),
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children:[
-                Left(),
-              ],
+              children:tabViews,
             ),
           ),
         ],
