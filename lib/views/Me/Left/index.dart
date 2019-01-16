@@ -11,7 +11,7 @@ class LeftTab extends StatelessWidget{
         crossAxisCount: 2,
         childAspectRatio:0.8,
         children:[
-          Cardd()
+          Cardd(),
         ],
     );
     }

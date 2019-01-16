@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget{
       // appBar:AppBar(
         // elevation: 0.0,
          appBar: TabBar(
-           
+
               isScrollable: false,//是否可滑动
               unselectedLabelColor: Colors.black26,//未选中按钮颜色
               labelColor: Colors.red,//选中按钮颜色

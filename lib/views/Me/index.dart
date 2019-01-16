@@ -16,20 +16,25 @@ class _MeScreenState extends State<MeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size);
     return Scaffold(
       appBar: AppBar(
+        // AppBar height 56.0
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
-          actions:[
-             IconButton(
+          actions: [
+            IconButton(
               icon: Icon(Icons.share),
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ],
           leading: IconButton(
-              icon: Icon(Icons.list, color: Colors.black,size: 30.0,),
+              icon: Icon(
+                Icons.list,
+                color: Colors.black,
+                size: 30.0,
+              ),
               onPressed: () {
                 print(Scaffold);
                 Scaffold.of(context).openDrawer();
@@ -41,8 +46,10 @@ class _MeScreenState extends State<MeScreen> {
                     fontWeight: FontWeight.normal,
                     fontSize: 14.0,
                     color: Colors.black))
-          ])),
-      body: Column(children: [
+          ])
+          ),
+      body:
+      Column(children: [
         MeTop(),
         Expanded(child: MeMain()),
       ]),
