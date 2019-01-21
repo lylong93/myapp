@@ -49,10 +49,21 @@ class _MeScreenState extends State<MeScreen> {
           ])
           ),
       body:
-      Column(children: [
-        MeTop(),
-        Expanded(child: MeMain()),
-      ]),
+      // Column(children: [
+      //   MeTop(),
+      //   Expanded(child: MeMain()),
+      // ]),
+      ListView(
+        children: <Widget>[
+            MeTop(),
+            Container(
+              // 180 + 60 + 56
+              height: 516.0,
+              child: MeMain(),
+            ),
+        ],
+      )
+
     );
   }
 }

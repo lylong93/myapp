@@ -57,9 +57,6 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
           Guan(),
           Find()
         ],
-        // children: myTabs.map((Tab tab) {
-        //   return Center(child: Text(tab.text));
-        // }).toList(),
       ),
     );
   }
