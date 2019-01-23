@@ -40,40 +40,29 @@ class _YellowBirdState extends State<YellowBird> {
   }
 }
 
+class FootIcon extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return  Stack(
+      children: <Widget>[
+        Positioned(
+          right: 3,
+          child:Text('100',style: TextStyle(fontSize:10.0,color: Colors.red),),
+          ),
+        Container(
+        alignment: Alignment(-1, 0),
+        decoration: BoxDecoration(
+        ),
+          width: 45.0,
+          child: Icon(Icons.grade),
+        ), 
+      ],
+    );
+  }
+}
+
 class Guan extends StatelessWidget {
   final List<Widget> list = <Widget>[
-    Container(
-        // padding: const EdgeInsets.all(10.00),
-        margin: EdgeInsets.only(bottom: 5.0),
-        decoration: BoxDecoration(
-          color: Colors.red,
-        ),
-        child: Column(
-          children: <Widget>[
-            Flex(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(children: [
-                  CircleAvatar(),
-                  Column(children: [Text('name'), Text('time')])
-                ]),
-                Text('ok')
-              ],
-            ),
-            Image.network(
-              'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
-            ),
-            Text(
-              'okkekjkokkekjkkjkeokkekjkkjkeokkekjkkjkeokkekjkkjkeokkekjkkjkekjkeokkekjkokkekjkkjkeokkekjkkjkeokkekjkkjkeokkekjkkjkeokkekjkkjkekjke',
-              softWrap: false,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            )
-            // Text('okkekjkkjke',softWrap: true,),
-          ],
-        )),
     Container(
         padding: const EdgeInsets.only(bottom: 10.0, top: 5.0),
         margin: const EdgeInsets.only(bottom: 5.0),
@@ -106,23 +95,23 @@ class Guan extends StatelessWidget {
             Image.network(
               'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
             ),
-            YellowBird()
-            // Flex(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //     direction: Axis.horizontal,
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children:[
-            //       Icon(Icons.star),
-            //       Row(
-            //         children: <Widget>[
-            //           Icon(Icons.star),
-            //           Icon(Icons.star),
-            //           Icon(Icons.star),
-            //         ],
-            //         // Icon(Icons.star),
-            //       )
-            //     ],
-            // ),
+            YellowBird(),
+            Flex(
+              crossAxisAlignment: CrossAxisAlignment.center,
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:[
+                  FootIcon(),
+                  Row(
+                    children: <Widget>[
+                      FootIcon(),
+                      FootIcon(),
+                      FootIcon()
+                    ],
+                    // Icon(Icons.star),
+                  )
+                ],
+            ),
           ],
         )),
   ];
