@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/views/Detail/index.dart';
 
-List<Container> _buildGridTileList(int count) {
+List<Container> _buildGridTileList(int count, context) {
   return List<Container>.generate(
       count,
       (int index) => Container(
-            child: Container(
-                // padding: const EdgeInsets.all(10.00),
-                margin: EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Flex(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      direction: Axis.horizontal,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    ),
-                    Image.network(
-                      'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
-                    ),
-                    // Text('okkekjkkjke',softWrap: true,),
-                  ],
-                )),
+            child: GestureDetector(
+              onTap: () {
+                print('object');
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  return Detail();
+                }));
+              },
+              child: Container(
+                  // padding: const EdgeInsets.all(10.00),
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      // Flex(
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   direction: Axis.horizontal,
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // ),
+                      Hero(
+                        tag: 'imao',
+                        child: Image.network(
+                          'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
+                        ),
+                      ),
+
+                      // Text('okkekjkkjke',softWrap: true,),
+                    ],
+                  )),
+            ),
           ));
 }
 
@@ -56,7 +69,7 @@ class Find extends StatelessWidget {
       child: GridView.count(
         crossAxisCount: 2,
         // gridDelegate: ,
-        children: _buildGridTileList(30),
+        children: _buildGridTileList(1, context),
       ),
     );
   }
