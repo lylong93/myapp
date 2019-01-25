@@ -7,17 +7,31 @@ class Detail extends StatelessWidget {
         // appBar: AppBar(
         //   title: Text('data'),
         // ),
-        body:
-        
-         GestureDetector(
-            child: Hero(
-              tag: 'imao',
-              child: Image.network(
-                'https://img5.duitang.com/uploads/item/201411/07/20141107164412_v284V.jpeg',
-              ),
+        body: GestureDetector(
+            child:Column(
+              children: <Widget>[
+                Hero(
+                  tag: 'om',
+                  child: Image.network(
+                    'https://img5.duitang.com/uploads/item/201411/07/20141107164412_v284V.jpeg',
+                  ),
+                ),
+                // Hero(
+                //   tag: 'om2',
+                //   child: Image.network(
+                //     'https://img5.duitang.com/uploads/item/201411/07/20141107164412_v284V.jpeg',
+                //   ),
+                // ),
+              ],
             ),
+            // child: Hero(
+            //   tag: 'imao',
+            //   child: Image.network(
+            //     'https://img5.duitang.com/uploads/item/201411/07/20141107164412_v284V.jpeg',
+            //   ),
+            // ),
             onTap: () {
-              Navigator.pop(context);
-            }));
+      Navigator.pop(context);
+    }));
   }
 }
