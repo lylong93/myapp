@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:myapp/components/card/index.dart';
 
 class MidTab extends StatelessWidget{

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import './guan.dart';
 import './find.dart';
+import 'package:myapp/views/Search/index.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({ Key key,this.callback}):super(key: key);
+  const HomeScreen({Key key, this.callback}) : super(key: key);
   final callback;
-  
+
   @override
   _MyTabbedPageState createState() => _MyTabbedPageState();
 }
 
-class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _MyTabbedPageState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'LEFT'),
     Tab(text: 'RIGHT'),
@@ -35,28 +37,24 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:IconButton(
+          leading: IconButton(
             icon: Icon(Icons.playlist_play),
             tooltip: 'Air it',
             onPressed: () {
               widget.callback();
             },
-        ),
-        title: TabBar(
-          controller: _tabController,
-          tabs: myTabs,
-        ), 
-        bottom:PreferredSize(
-          child:(SerachBar()),
-          preferredSize:Size(80.0,50.0)
-        )
-      ),
+          ),
+          title: TabBar(
+            controller: _tabController,
+            tabs: myTabs,
+          ),
+          bottom: PreferredSize(
+              child: (SerachBar()),
+              // child: (MaterialSearch(),
+              preferredSize: Size(80.0, 50.0))),
       body: TabBarView(
         controller: _tabController,
-        children: <Widget>[
-          Guan(),
-          Find()
-        ],
+        children: <Widget>[Guan(), Find()],
       ),
     );
   }
@@ -64,27 +62,33 @@ class _MyTabbedPageState extends State<HomeScreen> with SingleTickerProviderStat
 
 class SerachBar extends StatelessWidget {
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10.0),
       height: 40.00,
-      decoration:BoxDecoration(
-         color: Theme.of(context).backgroundColor,
+      decoration: BoxDecoration(
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(4.0)),
-      child:  Row(
-        children: <Widget>[
-           Padding(
-            padding: EdgeInsets.only(right: 10.0, top: 3.0, left: 10.0),
-            child: Icon(Icons.search,
-                size: 24.0, color: Theme.of(context).accentColor),
-          ),
-      //     // new Expanded(
-      //       // child: new MaterialSearchInput(
-      //       //   placeholder: '搜索 flutter 组件',
-      //       //   // getResults: getResults,
-      //       // ),
-      //     // ),
-        ],
+      child: GestureDetector(
+        onTap:() {
+          showSearch(context:context,delegate:Search());
+        },
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(right: 10.0, top: 3.0, left: 10.0),
+              child: Icon(Icons.search,
+                  size: 24.0, color: Theme.of(context).accentColor),
+            ),
+            Text('ok')
+            //     // new Expanded(
+            //       // child: new MaterialSearchInput(
+            //       //   placeholder: '搜索 flutter 组件',
+            //       //   // getResults: getResults,
+            //       // ),
+            //     // ),
+          ],
+        ),
       ),
     );
   }

@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:myapp/views/Detail/index.dart';
 
 List<Container> _buildGridTileList(int count, context) {
+  // print('om$index');
   return List<Container>.generate(
+      // print('om$index');
       count,
       (int index) => Container(
-        height: 100.0,
+            height: 100.0,
             child: GestureDetector(
               onTap: () {
-                print('imao$count');
+                // print('imao$count');
                 Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return Detail();
+                  print('om$index');
+                  return Detail(count: index);
                 }));
               },
               child: Container(
@@ -29,11 +32,10 @@ List<Container> _buildGridTileList(int count, context) {
                       // ),
                       Hero(
                         tag: 'om$index',
-                        child: 
-                        // Image.network(
-                        //   'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
-                        // ),
-                        Text('om$index')
+                        child: Image.network(
+                          'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
+                        ),
+                        // Text('om$index')
                       ),
                       // Hero(
                       //   tag: 'imao',
@@ -71,7 +73,6 @@ class Find extends StatelessWidget {
           ],
         )),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,7 +80,7 @@ class Find extends StatelessWidget {
       child: GridView.count(
         crossAxisCount: 2,
         // gridDelegate: ,
-        children: _buildGridTileList(2, context),
+        children: _buildGridTileList(8, context),
       ),
     );
   }
