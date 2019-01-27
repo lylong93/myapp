@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './guan.dart';
 import './find.dart';
 import 'package:myapp/views/Search/index.dart';
+import 'package:myapp/api/Home/index.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key, this.callback}) : super(key: key);
@@ -16,7 +17,7 @@ class _MyTabbedPageState extends State<HomeScreen>
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'LEFT'),
     Tab(text: 'RIGHT'),
-    Tab(text: 'other'),
+    // Tab(text: 'other'),
   ];
 
   TabController _tabController;
@@ -37,13 +38,6 @@ class _MyTabbedPageState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.playlist_play),
-            tooltip: 'Air it',
-            onPressed: () {
-              widget.callback();
-            },
-          ),
           title: TabBar(
             controller: _tabController,
             tabs: myTabs,
@@ -70,8 +64,10 @@ class SerachBar extends StatelessWidget {
           color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(4.0)),
       child: GestureDetector(
-        onTap:() {
-          showSearch(context:context,delegate:Search());
+        onTap: () {
+          print('object');
+          // HomeApi.getTest();
+          showSearch(context: context, delegate: Search());
         },
         child: Row(
           children: <Widget>[
@@ -80,7 +76,6 @@ class SerachBar extends StatelessWidget {
               child: Icon(Icons.search,
                   size: 24.0, color: Theme.of(context).accentColor),
             ),
-            Text('ok')
             //     // new Expanded(
             //       // child: new MaterialSearchInput(
             //       //   placeholder: '搜索 flutter 组件',

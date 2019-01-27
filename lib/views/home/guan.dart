@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_swiper/flutter_swiper.dart';
+
 class YellowBird extends StatefulWidget {
   @override
   _YellowBirdState createState() => _YellowBirdState();
@@ -40,22 +42,24 @@ class _YellowBirdState extends State<YellowBird> {
   }
 }
 
-class FootIcon extends StatelessWidget{
+class FootIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Stack(
+    return Stack(
       children: <Widget>[
         Positioned(
           right: 3,
-          child:Text('100',style: TextStyle(fontSize:10.0,color: Colors.red),),
+          child: Text(
+            '100',
+            style: TextStyle(fontSize: 10.0, color: Colors.red),
           ),
-        Container(
-        alignment: Alignment(-1, 0),
-        decoration: BoxDecoration(
         ),
+        Container(
+          alignment: Alignment(-1, 0),
+          decoration: BoxDecoration(),
           width: 45.0,
           child: Icon(Icons.grade),
-        ), 
+        ),
       ],
     );
   }
@@ -92,25 +96,24 @@ class Guan extends StatelessWidget {
                 ],
               ),
             ),
-            Image.network(
-              'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg',
+            FadeInImage(
+              placeholder: NetworkImage(
+                  'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
+              image: NetworkImage(
+                  'http://pic.hsw.cn/0/13/09/09/13090929_929741.jpg'),
             ),
             YellowBird(),
             Flex(
               crossAxisAlignment: CrossAxisAlignment.center,
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  FootIcon(),
-                  Row(
-                    children: <Widget>[
-                      FootIcon(),
-                      FootIcon(),
-                      FootIcon()
-                    ],
-                    // Icon(Icons.star),
-                  )
-                ],
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FootIcon(),
+                Row(
+                  children: <Widget>[FootIcon(), FootIcon(), FootIcon()],
+                  // Icon(Icons.star),
+                )
+              ],
             ),
           ],
         )),

@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
 Dio dio = new Dio();
+//lylapp
+//123456
 
-String datasrc = "https://www.easy-mock.com/mock/5c32bcfc74cc6d35e97437a3/api/data";
+String api = "https://www.easy-mock.com/mock/5c4da0c3e4522814af87849a/api/";
 
 class Api {
   static get(src) async{
-    var response= await dio.get(src);
+    print('api$src');
+    var response= await dio.get('$api$src');
     return response;
   }
   static post() async{
