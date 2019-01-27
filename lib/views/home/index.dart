@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import './guan.dart';
-import './find.dart';
 import 'package:myapp/views/Search/index.dart';
+
+import 'package:myapp/views/Home/Left/index.dart';
+import 'package:myapp/views/Home/Right/index.dart';
+
 import 'package:myapp/api/Home/index.dart';
 
 class HomeScreen extends StatefulWidget {

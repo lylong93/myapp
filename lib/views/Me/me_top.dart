@@ -14,8 +14,14 @@ class MeTop extends StatelessWidget {
         .map((n) => Container(
               child: Column(
                 children: <Widget>[
-                  Text(n.title,style: TextStyle(fontSize: 13.0),),
-                  Text(n.subtitle,style: TextStyle(fontSize: 13.0),),
+                  Text(
+                    n.title,
+                    style: TextStyle(fontSize: 13.0),
+                  ),
+                  Text(
+                    n.subtitle,
+                    style: TextStyle(fontSize: 13.0),
+                  ),
                 ],
               ),
             ))
@@ -108,9 +114,18 @@ class MeTop extends StatelessWidget {
               )),
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.group_work,size: 14.0,),
-                  Text(' 解锁等级 ',style: TextStyle(fontSize: 14.0),),
-                  Icon(Icons.navigate_next,size: 14.0,),
+                  Icon(
+                    Icons.group_work,
+                    size: 14.0,
+                  ),
+                  Text(
+                    ' 解锁等级 ',
+                    style: TextStyle(fontSize: 14.0),
+                  ),
+                  Icon(
+                    Icons.navigate_next,
+                    size: 14.0,
+                  ),
                 ],
               ),
             ))

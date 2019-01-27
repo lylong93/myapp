@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './recomm.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -67,6 +68,7 @@ class FootIcon extends StatelessWidget {
 
 class Guan extends StatelessWidget {
   final List<Widget> list = <Widget>[
+    Recomm(),
     Container(
         padding: const EdgeInsets.only(bottom: 10.0, top: 5.0),
         margin: const EdgeInsets.only(bottom: 5.0),
