@@ -50,7 +50,7 @@ class _MyTabbedPageState extends State<HomeScreen>
               preferredSize: Size(80.0, 50.0))),
       body: TabBarView(
         controller: _tabController,
-        children: <Widget>[Guan(), Find()],
+        children: <Widget>[HomeLeft(), Find()],
       ),
     );
   }
