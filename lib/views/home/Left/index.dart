@@ -17,7 +17,6 @@ class HomeLeft extends StatelessWidget {
   _build() {
     List<Widget> end = [];
     list.forEach((f) {
-      print(false);
       end..add(LeftCard(name:'o'));
     });
     // end.insert(0,Recomm());

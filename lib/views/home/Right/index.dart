@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/views/Detail/index.dart';
+import './rightcard.dart';
 
 List<Container> _buildGridTileList(int count, context) {
   // print('om$index');
