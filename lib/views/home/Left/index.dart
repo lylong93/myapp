@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './recomm.dart';
+import 'dart:convert';
 import './leftcard.dart';
 
 class HomeLeft extends StatelessWidget {
@@ -17,7 +18,10 @@ class HomeLeft extends StatelessWidget {
   _build() {
     List<Widget> end = [];
     list.forEach((f) {
-      end..add(LeftCard(name:'o'));
+      // print(f);
+      //  print(user);
+      // print(jsonDecode('name'));
+      end..add(LeftCard(name:'name'));
     });
     // end.insert(0,Recomm());
     return end;
