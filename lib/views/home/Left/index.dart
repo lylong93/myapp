@@ -3,6 +3,8 @@ import './recomm.dart';
 import 'dart:convert';
 import './leftcard.dart';
 
+import 'package:myapp/models/home.dart';
+
 class HomeLeft extends StatelessWidget {
   final list = [
     {
@@ -17,7 +19,11 @@ class HomeLeft extends StatelessWidget {
   ];
   _build() {
     List<Widget> end = [];
-    list.forEach((f) {
+    list.forEach((item) {
+      var jsonText = jsonEncode(item);
+      print(jsonText);
+      // print(userMap);
+      // var user = new HomeItem.fromJson(userMap);
       // print(f);
       //  print(user);
       // print(jsonDecode('name'));
