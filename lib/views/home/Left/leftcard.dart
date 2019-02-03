@@ -13,7 +13,6 @@ class _UnfoldState extends State<_Unfold> {
   num _maxLines = 2;
   @override
   Widget build(BuildContext context) {
-    print(widget.text);
     if (this.showmore) {
       _overflow = TextOverflow.clip;
       _maxLines = null;

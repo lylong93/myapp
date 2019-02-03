@@ -5,6 +5,8 @@ import './leftcard.dart';
 
 import 'package:myapp/models/home.dart';
 
+import 'package:myapp/api/Home/index.dart';
+
 class HomeLeft extends StatelessWidget {
   final list = [
     {
@@ -17,19 +19,59 @@ class HomeLeft extends StatelessWidget {
       'name': '策划3',
     }
   ];
-  _build() {
+
+  final str ={
+  "string": "★★",
+  "string2": "★★★★★★",
+  "number": 202,
+  "number2": 90.12272,
+  "boolean": false,
+  "regexp": "dP6",
+  "absolutePath": "★★ demo",
+  "user": {
+    "name": "demo"
+  },
+  "object": {
+    "310000": "上海市",
+    "320000": "江苏省"
+  },
+  "array": "AMD"
+};
+
+var tt = '{"name":"1"}';
+
+  // static getTest() async {
+  //   var o =  await HomeApi.getTest();
+  //   print(o);
+  // }
+
+  getdata () async{
+
+    var o = await HomeApi.getTest();
+    print(o);
+    tt = o;
+  }
+   _build(){
+    // print(tt);
+    getdata();
     List<Widget> end = [];
     list.forEach((item) {
-      var jsonText = jsonEncode(item);
-      print(jsonText);
-      // print(userMap);
+      // print(str.string);
+
+      var userMap = jsonDecode(tt);
+      var user = new HomeItem.fromJson(userMap);
+
+
+      // String json = jsonEncode(str);
+      // print(user.name);
+      // Map userMap = jsonDecode(str);
       // var user = new HomeItem.fromJson(userMap);
-      // print(f);
-      //  print(user);
-      // print(jsonDecode('name'));
+      // print(jsonText);
+      // print(userMap);
+      // var user = new HomeItem.fromJson(item);
+      // print(userMap);
       end..add(LeftCard(name:'name'));
     });
-    // end.insert(0,Recomm());
     return end;
   }
 
