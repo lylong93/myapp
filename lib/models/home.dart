@@ -1,16 +1,16 @@
 class HomeItem {
   final String name;
-  final String email;
+  final String text;
 
-  HomeItem(this.name, this.email);
+  HomeItem(this.name, this.text);
 
   HomeItem.fromJson(Map<String, dynamic> json)
       : name = json['name'],
-        email = json['email'];
+        text = json['text'];
 
   Map<String, dynamic> toJson() =>
     {
       'name': name,
-      'email': email,
+      'email': text,
     };
 }
