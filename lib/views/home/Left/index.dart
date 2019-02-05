@@ -7,40 +7,50 @@ import 'package:myapp/models/home.dart';
 
 import 'package:myapp/api/Home/index.dart';
 
-class HomeLeft extends StatelessWidget {
-  final list = [
-    {
-      'name': '策划1',
-    },
-    {
-      'name': '策划2',
-    },
-    {
-      'name': '策划3',
-    }
+class HomeLeft extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() => _HomeLeftState();
+}
+
+class _HomeLeftState extends State<HomeLeft>  {
+  List<Widget> end = [
+    LeftCard(name: 'name')
   ];
 
-  getdata () async{
-    var jsonString = await HomeApi.getTest();
-    var user = new HomeItem.fromJson(jsonString);
-    print(user.name);
-  }
-   _build(){
-    // print(tt);
+  @override
+  void initState() {
+    super.initState();
     getdata();
-    List<Widget> end = [];
-    list.forEach((item) {
-
-      end..add(LeftCard(name:'name'));
-    });
-    return end;
   }
+  
+  getdata() async {
+    var jsonString = await HomeApi.getTest();
+    var data = jsonString['list'];
+    // end.clear();
+    data.forEach((item) {
+      var user = new HomeItem.fromJson(item);
+      end..add(LeftCard(name: 'name'));
+    });
+    // print(end);
+    // List end = [];
+  }
+
+  // _build() {
+  //   // final List<Widget> end = [];
+  //   // getdata();
+  //   // print(end);
+  //   // print(end);
+  //   // return end;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    getdata();
+    print(end);
     return Container(
       color: Color.fromRGBO(1, 1, 1, .1),
-      child: ListView(children: _build()),
+      child: ListView(children:end),
     );
   }
 }
