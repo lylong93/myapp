@@ -8,49 +8,57 @@ import 'package:myapp/models/home.dart';
 import 'package:myapp/api/Home/index.dart';
 
 class HomeLeft extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => _HomeLeftState();
 }
 
-class _HomeLeftState extends State<HomeLeft>  {
-  List<Widget> end = [
-    LeftCard(name: 'name')
-  ];
+class _HomeLeftState extends State<HomeLeft> {
+  List<Widget> childList = [];
+  ScrollController _scrollController = new ScrollController();
 
   @override
   void initState() {
-    super.initState();
     getdata();
+    super.initState();
+    _scrollController.addListener(() {
+       getdata();
+    });
   }
-  
+
   getdata() async {
     var jsonString = await HomeApi.getTest();
     var data = jsonString['list'];
-    // end.clear();
+    List<Widget> _end = [];
+    // childList.clear();
     data.forEach((item) {
       var user = new HomeItem.fromJson(item);
-      end..add(LeftCard(name: 'name'));
+      _end..add(LeftCard(name: 'name'));
     });
-    // print(end);
-    // List end = [];
+
+    setState(() {
+      childList = _end;
+    });
   }
 
-  // _build() {
-  //   // final List<Widget> end = [];
-  //   // getdata();
-  //   // print(end);
-  //   // print(end);
-  //   // return end;
-  // }
+  Future _loadRefresh() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        childList.clear();
+        getdata();
+        return null;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    getdata();
-    print(end);
-    return Container(
+    return RefreshIndicator(
       color: Color.fromRGBO(1, 1, 1, .1),
-      child: ListView(children:end),
+      child: ListView(
+        children: childList,
+        controller:_scrollController
+      ),
+      onRefresh: _loadRefresh,
     );
   }
 }
