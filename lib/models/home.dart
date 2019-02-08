@@ -2,17 +2,30 @@ class HomeItem {
   final String name;
   final String text;
   final String bgimg; 
-  HomeItem(this.name, this.text,this.bgimg);
+  final Num num; 
+  HomeItem({this.name,this.text,this.bgimg,this.num});
 
-  HomeItem.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        bgimg= json['bgimg'],
-        text = json['text'];
+  factory HomeItem.fromJson(Map<String, dynamic> parsedJson) {
+      return HomeItem (
+        name: parsedJson['name'],
+        text: parsedJson['text'],
+        bgimg: parsedJson['bgimg'],
+        num:Num.fromJson( parsedJson['num'])
+        );
+  }
+}
+class Num{
+  final int one;
+  final int tow;
+  final int three;
 
-  Map<String, dynamic> toJson() =>
-    {
-      'name': name,
-      'email': text,
-      'bgimg':bgimg
-    };
+  Num({this.one,this.tow,this.three});
+
+    factory Num.fromJson(Map<String, dynamic> json) {
+      return Num (
+        one: json['one'],
+        tow: json['tow'],
+        three: json['three'],
+        );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/home.dart';
 
 class _Unfold extends StatefulWidget {
   _Unfold({this.text});
@@ -43,6 +44,10 @@ class _UnfoldState extends State<_Unfold> {
 }
 
 class _FootIcon extends StatelessWidget {
+  final String num;
+  _FootIcon({this.num});
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -50,7 +55,7 @@ class _FootIcon extends StatelessWidget {
         Positioned(
           right: 3,
           child: Text(
-            '100',
+            this.num,
             style: TextStyle(fontSize: 10.0, color: Colors.red),
           ),
         ),
@@ -66,12 +71,16 @@ class _FootIcon extends StatelessWidget {
 }
 
 class LeftCard extends StatelessWidget {
-  LeftCard({this.name});
+  LeftCard({this.name,this.bgimg,this.text,this.num});
   final String name;
+  final String bgimg;
+  final String text;
+  final Num num;
   final List list = [1, 2, 3];
 
   List<Widget> _build() {
-    return list.map((f) => _FootIcon()).toList();
+    print(num.one);
+    return list.map((f) => _FootIcon(num:num.one.toString())).toList();
   }
 
   @override
@@ -105,20 +114,21 @@ class LeftCard extends StatelessWidget {
                   ],
                 )),
             FadeInImage(
+              height: 300.0,
               placeholder: NetworkImage(
                   'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
               image: NetworkImage(
-                  'http://pic.hsw.cn/0/13/09/09/13090929_929741.jpg'),
+                  this.bgimg),
             ),
             _Unfold(
-              text: 'oooooooooooooooooooooooooooooooooooooooooooooooooo',
+              text: this.text,
             ),
             Flex(
               crossAxisAlignment: CrossAxisAlignment.center,
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _FootIcon(),
+                _FootIcon(num:'1'),
                 Row(
                   children: _build(),
                 )
