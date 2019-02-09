@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/home.dart';
-
+import 'dart:convert';
 class _Unfold extends StatefulWidget {
   _Unfold({this.text});
   final String text;
@@ -45,8 +45,8 @@ class _UnfoldState extends State<_Unfold> {
 
 class _FootIcon extends StatelessWidget {
   final String num;
-  _FootIcon({this.num});
-
+  final Widget icon;
+  _FootIcon({this.num,this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _FootIcon extends StatelessWidget {
           alignment: Alignment(-1, 0),
           decoration: BoxDecoration(),
           width: 45.0,
-          child: Icon(Icons.grade),
+          child: icon,
         ),
       ],
     );
@@ -71,16 +71,21 @@ class _FootIcon extends StatelessWidget {
 }
 
 class LeftCard extends StatelessWidget {
-  LeftCard({this.name,this.bgimg,this.text,this.num});
+  LeftCard({this.name, this.bgimg, this.text, this.num});
   final String name;
   final String bgimg;
   final String text;
   final Num num;
-  final List list = [1, 2, 3];
+
+  final List list = [0,1,2];
+  final List nlist = ['one', 'tow', 'three'];
+  final List icons = [Icon(Icons.grade),Icon(Icons.gradient), Icon(Icons.hd)];
 
   List<Widget> _build() {
-    print(num.one);
-    return list.map((f) => _FootIcon(num:num.one.toString())).toList();
+
+    return list.map((item){
+      return _FootIcon(num: num.toJson()['$nlist[item]'].toString(),icon:icons[item]);
+    }).toList();
   }
 
   @override
@@ -117,8 +122,7 @@ class LeftCard extends StatelessWidget {
               height: 300.0,
               placeholder: NetworkImage(
                   'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
-              image: NetworkImage(
-                  this.bgimg),
+              image: NetworkImage(this.bgimg),
             ),
             _Unfold(
               text: this.text,
@@ -128,7 +132,7 @@ class LeftCard extends StatelessWidget {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _FootIcon(num:'1'),
+                _FootIcon(num: '1',icon:Icon(Icons.grade)),
                 Row(
                   children: _build(),
                 )
