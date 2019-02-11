@@ -82,9 +82,9 @@ class LeftCard extends StatelessWidget {
   final List icons = [Icon(Icons.grade),Icon(Icons.gradient), Icon(Icons.hd)];
 
   List<Widget> _build() {
-
     return list.map((item){
-      return _FootIcon(num: num.toJson()['$nlist[item]'].toString(),icon:icons[item]);
+      var i = nlist[item];
+      return _FootIcon(num: num.toJson()['$i'].toString(),icon:icons[item]);
     }).toList();
   }
 
