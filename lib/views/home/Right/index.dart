@@ -21,13 +21,13 @@ List<Container> _buildGridTileList(int count, context) {
 }
 
 class Find extends StatefulWidget {
-   @override
+  @override
   State<StatefulWidget> createState() => _HomeLeftState();
 }
 
 class _HomeLeftState extends State<Find> {
   List childList = [];
-  ScrollController _scrollController = new ScrollController();
+  ScrollController _controller = new ScrollController();
 
   @override
   void initState() {
@@ -42,25 +42,30 @@ class _HomeLeftState extends State<Find> {
     // });
   }
 
+  Future _loadRefresh() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        getdata();
+      });
+    });
+  }
 
   getdata() async {
-  var jsonString = await HomeApi.getTest();
-  var data = jsonString['list'];
-  data.forEach((item) {
-    // var _item = new HomeItem.fromJson(item);
-    // childList..add(_item);
-  });
-  setState(() {
-  });
-}
+    var jsonString = await HomeApi.getGrid();
+    var data = jsonString['list'];
+    data.forEach((item) {
+      // var _item = new HomeItem.fromJson(item);
+      // childList..add(_item);
+    });
+    setState(() {});
+  }
 
   final List<Widget> list = <Widget>[
     Container(
-        // padding: const EdgeInsets.all(10.00),
         margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-          // color: Colors.red,
-        ),
+            // color: Colors.red,
+            ),
         child: Column(
           children: <Widget>[
             Flex(
@@ -77,13 +82,20 @@ class _HomeLeftState extends State<Find> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return RefreshIndicator(
       color: Color.fromRGBO(1, 1, 1, .1),
       child: GridView.count(
+        // GridView.builder(
+
+//         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+// childAspectRatio: 4 / 5,
+//         ),
         crossAxisCount: 2,
         childAspectRatio: 4 / 5,
         children: _buildGridTileList(8, context),
+        controller: _controller,
       ),
+      onRefresh: _loadRefresh,
     );
   }
 }

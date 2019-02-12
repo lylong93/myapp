@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Friend/index.dart';
-class Item  {
 
-}
 Widget _build (context){
   return Container(
       // padding: EdgeInsets.only(top: 7.0,bottom: 7.0),

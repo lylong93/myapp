@@ -9,9 +9,9 @@ class RightCard extends StatelessWidget {
     return Container(
         height: 200.0,
         margin: EdgeInsets.all(5.0),
-        decoration: BoxDecoration(
-          color: Colors.red,
-        ),
+        // decoration: BoxDecoration(
+        //   color: Colors.red,
+        // ),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
