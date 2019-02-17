@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MsgMain extends StatelessWidget {
+  MsgMain({this.text});
+  String text;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
         key:Key('1'),
         direction:DismissDirection.endToStart,
         background: Container(
-        // color: Colors.red,
+        margin: EdgeInsets.only(top:10.0),
         decoration:BoxDecoration(
           gradient:LinearGradient(colors: [Colors.yellow,Colors.red],stops:[0.1,0.9])
         ),
@@ -27,7 +29,9 @@ class MsgMain extends StatelessWidget {
           // items.removeAt(index);
           print(index);
         },
-        child: Container(
+        child:
+         Container(
+            margin: EdgeInsets.only(top:10.0),
             color: Colors.amberAccent,
             padding: EdgeInsets.all(15.0),
             child: Row(
@@ -40,7 +44,7 @@ class MsgMain extends StatelessWidget {
                         child: CircleAvatar(),
                       ),
                       Column(
-                        children: <Widget>[Text('星期五'), Text('星期五')],
+                        children: <Widget>[Text(text), Text(text)],
                       )
                     ],
                   ),
@@ -54,6 +58,7 @@ class MsgMain extends StatelessWidget {
                       )
                     ],
                   )
-                ])));
+                ]))
+                );
   }
 }
