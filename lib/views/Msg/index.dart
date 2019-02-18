@@ -25,7 +25,7 @@ class _MsgScreenState extends State<MsgScreen> {
       ),
       body: ListView(
         physics: const AlwaysScrollableScrollPhysics(),
-        children: <Widget>[MsgTop(), MsgMain(text:'第一条消息'),MsgMain(text:'第二条消息'),MsgMain(text:'第三条消息')],
+        children: <Widget>[MsgTop(), MsgMain(text:'第一条消息',tip:'tip1'),MsgMain(text:'第二条消息',tip:'tip2'),MsgMain(text:'第三条消息',tip:'tip3')],
       ),
     );
   }

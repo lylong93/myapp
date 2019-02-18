@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MsgMain extends StatelessWidget {
-  MsgMain({this.text});
+  MsgMain({this.text,this.tip});
   String text;
+  String tip;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
@@ -51,7 +52,7 @@ class MsgMain extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text('星期五'),
+                      Text(tip),
                       Icon(
                         Icons.info,
                         size: 12.0,
