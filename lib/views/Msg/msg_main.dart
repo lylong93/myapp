@@ -52,10 +52,10 @@ class MsgMain extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(tip),
+                      // Text(tip),
                       Icon(
                         Icons.info,
-                        size: 12.0,
+                        size: 18.0,
                       )
                     ],
                   )
