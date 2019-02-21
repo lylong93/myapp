@@ -7,18 +7,20 @@ import 'dart:math' as Math;
 
 // 画布
 class Sky extends CustomPainter {
-  Sky({this.of, this.dx, this.rd, this.tt,this.co});
+  Sky({this.of, this.dx, this.rd, this.tt, this.co,this.tx});
   var of;
   var dx;
   var rd;
 
   var tt;
+  var tx;
   Color co;
 
   @override
   void paint(Canvas canvas, Size size) {
     var rect = Rect.fromLTRB(0.0, 0.0, 375.0, 700.0);
-
+    var rectline = Rect.zero;
+    
     var gradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomLeft,
@@ -26,29 +28,47 @@ class Sky extends CustomPainter {
       stops: [rd, 1],
     );
 
+    var gradientline = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomLeft,
+      colors: [Colors.red, Colors.black],
+    );
+
     Paint paint = new Paint()
       ..strokeWidth = 1
       ..style = PaintingStyle.fill
       ..shader = gradient.createShader(rect);
 
-    // Paint linepaint = new Paint()
-    //   ..strokeWidth = 10
-    //   ..style = PaintingStyle.stroke
-    //   ..color = Colors.yellow;
-    // linepaint.shader = gradient.createShader(rect);
+    Paint linepaint = new Paint()
+      ..strokeWidth = 10
+      ..style = PaintingStyle.stroke
+      ..color = Colors.yellow
+      ..shader = gradientline.createShader(rectline);
 
     var path1 = Path();
 
     path1.reset();
-    path1.moveTo(0.0, 100.0);
-    path1.cubicTo(0.0, 100.0, 200.0, 300.0, 375.0, 100.0);
+    path1.moveTo(0.0, 200.0);
+    path1.cubicTo(0.0, 200.0, 300.0, 350.0, 375.0, 200.0);
+
+    // var path2 = Path();
+
+    // path1.reset();
+    // path1.moveTo(0.0, 100.0);
+    // path1.cubicTo(0.0, 100.0, 200.0, 300.0, 375.0, 100.0);
+
+    // var path3 = Path();
+
+    // path1.reset();
+    // path1.moveTo(0.0, 100.0);
+    // path1.cubicTo(0.0, 100.0, 200.0, 300.0, 375.0, 100.0);
 
     var path = Path();
 
     path.reset();
     path.moveTo(0.0, 700.0);
     path.lineTo(0.0, tt);
-    path.cubicTo(0.0, tt, 100.0, tt, 375.0, tt);
+    path.cubicTo(0.0, tt, 100.0, tx, 375.0, tt);
     path.lineTo(375.0, 700.0);
     path.close();
 
@@ -58,7 +78,10 @@ class Sky extends CustomPainter {
     );
 
     canvas.drawRect(rect, paint);
-    
+
+    // canvas.drawPath(path1, linepaint);
+    // canvas.drawPath(path2, linepaint);
+    // canvas.drawPath(path3, linepaint);
   }
 
   @override
@@ -95,8 +118,8 @@ class _ShopScreenState extends State<ShopScreen>
   double dx = 0.0;
   double rd = 0.1;
 
-  double tt = 600.0;
-
+  double tt = 700.0;
+  double tx = 700.0;
   Color co = Colors.green;
 
   var user;
@@ -109,9 +132,7 @@ class _ShopScreenState extends State<ShopScreen>
     super.initState();
 
     _nestcontroller.addListener(() {
-      // print(_nestcontroller.position);
-      // controller.animateTo();
-      topColor = Color(0x00000000);
+      // topColor = Color(0x00000000);
       var pix = _nestcontroller.position.pixels;
 
       if (pix == 244) {
@@ -119,18 +140,15 @@ class _ShopScreenState extends State<ShopScreen>
         controller.reset();
         controller.forward();
         istop = true;
-       co = Colors.black;
-        
-        // topColor = Colors.transparent;
+        co = Colors.green;
       }
-
       if (pix == 0) {
         print('到底部了');
         controller.reset();
+        tt= 300.0;
         controller.forward();
         istop = false;
-        co = Colors.green;
-        // topColor = Colors.blue;
+        // co = Colors.green;
       }
     });
 
@@ -140,26 +158,25 @@ class _ShopScreenState extends State<ShopScreen>
     )..addListener(() {
         if (!istop) {
           if (tt == 300.0) {
-            topColor = Colors.green;
+            // topColor = Colors.green;
           }
-          if(tt == 700.0) {
+          if (tt == 700.0) {
             return;
           }
           of++;
-          rd = rd - 0.02;
+          rd = rd - 0.15;
           tt = tt + 10;
-          print(tt);
+          tx = tt + Math.Random().nextDouble() * 10;
+          print(Math.Random().nextDouble());
         } else {
-          if(tt == 0) {
+          if (tt == 0) {
             return;
           }
           of--;
-          rd = rd + 0.02;
-          // rd = rd - 0.1;
+          rd = rd + 0.15;
           tt = tt - 10;
-
-          print(tt);
-          
+           tx = tt + Math.Random().nextDouble() * 10;
+          print(Math.Random().nextDouble());
         }
         setState(() {});
       });
@@ -176,7 +193,7 @@ class _ShopScreenState extends State<ShopScreen>
               dx = user.dx;
             },
             child: CustomPaint(
-              painter: Sky(of: of, dx: dx, rd: rd, tt: tt, co:co),
+              painter: Sky(of: of, dx: dx, rd: rd, tt: tt, co: co,tx:tx),
               child: NestedScrollView(
                   controller: _nestcontroller,
                   headerSliverBuilder:
