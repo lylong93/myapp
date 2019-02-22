@@ -49,7 +49,7 @@ class Sky extends CustomPainter {
 
     path1.reset();
     path1.moveTo(0.0, 200.0);
-    path1.cubicTo(0.0, 200.0, 300.0, 350.0, 375.0, 200.0);
+    path1.cubicTo(100.0, 100.0, 250.0, 350.0, 375.0, 200.0);
 
     // var path2 = Path();
 
@@ -146,6 +146,7 @@ class _ShopScreenState extends State<ShopScreen>
         print('到底部了');
         controller.reset();
         tt= 300.0;
+        tx = 280.0;
         controller.forward();
         istop = false;
         // co = Colors.green;
@@ -160,14 +161,14 @@ class _ShopScreenState extends State<ShopScreen>
           if (tt == 300.0) {
             // topColor = Colors.green;
           }
-          if (tt == 700.0) {
+          if (tx >= 700.0) {
             return;
           }
           of++;
           rd = rd - 0.15;
           tt = tt + 10;
-          tx = tt + Math.Random().nextDouble() * 10;
-          print(Math.Random().nextDouble());
+          tx = tx+8;
+          print(tx);
         } else {
           if (tt == 0) {
             return;
@@ -175,8 +176,8 @@ class _ShopScreenState extends State<ShopScreen>
           of--;
           rd = rd + 0.15;
           tt = tt - 10;
-           tx = tt + Math.Random().nextDouble() * 10;
-          print(Math.Random().nextDouble());
+          tx = tx-7;
+           print(tx);
         }
         setState(() {});
       });
