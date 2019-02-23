@@ -11,7 +11,9 @@ class RightTab extends StatelessWidget{
         crossAxisCount: 2,
         childAspectRatio:0.8,
         children:[
-         Text('right')
+         Cardd(),
+         Cardd(),
+         Cardd(),
         ],
     );
     }

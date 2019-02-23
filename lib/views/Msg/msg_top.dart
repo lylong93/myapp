@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/views/Me/Class/index.dart';
 
 class MsgTop extends StatelessWidget {
-
   final List items = [
-    ListItem(iconData: Icons.location_on, title: '解锁'),
-    ListItem(iconData: Icons.ondemand_video, title: '游戏'),
-    ListItem(iconData: Icons.local_taxi, title: '可以'),
+    ListItem(iconData: Icons.location_on, title: '解锁', color: Colors.red),
+    ListItem(iconData: Icons.ondemand_video, title: '游戏', color: Colors.green),
+    ListItem(iconData: Icons.local_taxi, title: '可以', color: Colors.blue),
   ];
 
   Iterable _buildItem() {
@@ -17,9 +16,18 @@ class MsgTop extends StatelessWidget {
               decoration: BoxDecoration(),
               child: Column(
                 children: <Widget>[
-                  Icon(
-                    n.toJson()['iconData'],// 'Icons.local_taxi',
-                    size: 50.0,
+                  Container(
+                    height: 50.0,
+                    width: 50.0,
+                    decoration: BoxDecoration(
+                      color: n.color,
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))
+                    ),
+                    child: Icon(
+                      n.toJson()['iconData'], // 'Icons.local_taxi',
+                      size: 30.0,
+                      color: Colors.white
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 10.0),
@@ -34,7 +42,6 @@ class MsgTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     return Column(
       children: <Widget>[
         Container(

@@ -40,7 +40,9 @@ class _MyTabbedPageState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Color.fromRGBO(0,87,55,0.7),
           title: TabBar(
+            indicatorColor:Colors.black54,
             controller: _tabController,
             tabs: myTabs,
           ),
@@ -63,7 +65,8 @@ class SerachBar extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       height: 40.00,
       decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
+          // color: Theme.of(context).backgroundColor,
+          color: Colors.white70,
           borderRadius: BorderRadius.circular(4.0)),
       child: GestureDetector(
         onTap: () {

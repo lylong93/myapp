@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/home.dart';
-import 'dart:convert';
+
 class _Unfold extends StatefulWidget {
   _Unfold({this.text});
   final String text;
@@ -46,7 +46,7 @@ class _UnfoldState extends State<_Unfold> {
 class _FootIcon extends StatelessWidget {
   final String num;
   final Widget icon;
-  _FootIcon({this.num,this.icon});
+  _FootIcon({this.num, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +77,14 @@ class LeftCard extends StatelessWidget {
   final String text;
   final Num num;
 
-  final List list = [0,1,2];
+  final List list = [0, 1, 2];
   final List nlist = ['one', 'tow', 'three'];
-  final List icons = [Icon(Icons.grade),Icon(Icons.gradient), Icon(Icons.hd)];
+  final List icons = [Icon(Icons.grade), Icon(Icons.gradient), Icon(Icons.hd)];
 
   List<Widget> _build() {
-    return list.map((item){
+    return list.map((item) {
       var i = nlist[item];
-      return _FootIcon(num: num.toJson()['$i'].toString(),icon:icons[item]);
+      return _FootIcon(num: num.toJson()['$i'].toString(), icon: icons[item]);
     }).toList();
   }
 
@@ -92,17 +92,21 @@ class LeftCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.only(bottom: 10.0, top: 5.0),
-        margin: const EdgeInsets.only(bottom: 5.0),
+        margin: const EdgeInsets.only(bottom: 10.0),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(144, 144, 144, 1),
-        ),
+            // color: Color.fromRGBO(144, 144, 144, 1),
+            color: Colors.white),
         child: Column(
           children: <Widget>[
             Container(
                 padding: const EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
-                  color: Colors.yellow,
+                  color: Colors.white,
+                  border: Border(
+                    bottom: BorderSide(width: 1.0, color: Colors.black12),
+                  ),
                 ),
+                margin: EdgeInsets.only(bottom: 1.0),
                 child: Flex(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   direction: Axis.horizontal,
@@ -124,19 +128,25 @@ class LeftCard extends StatelessWidget {
                   'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
               image: NetworkImage(this.bgimg),
             ),
-            _Unfold(
-              text: this.text,
+            Container(
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: _Unfold(
+                text: this.text,
+              ),
             ),
-            Flex(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _FootIcon(num: '1',icon:Icon(Icons.grade)),
-                Row(
-                  children: _build(),
-                )
-              ],
+            Container(
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Flex(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _FootIcon(num: '1', icon: Icon(Icons.grade)),
+                  Row(
+                    children: _build(),
+                  )
+                ],
+              ),
             ),
           ],
         ));

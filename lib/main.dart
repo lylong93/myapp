@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           centerItemText:'center',
           color: Colors.grey,
           notchedShape: CircularNotchedRectangle(),
-          selectedColor: Colors.red,
+          selectedColor: Color.fromRGBO(0,87,55,0.7),
            onTabSelected: _selectedTab,
           items: [
             FABBottomAppBarItem(iconData: Icons.menu, text: 'one'),
@@ -69,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromRGBO(146 ,182 ,213,1),
           onPressed: () {},
           tooltip: 'Increment',
           child: Icon(Icons.add),

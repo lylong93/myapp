@@ -7,7 +7,7 @@ import 'dart:math' as Math;
 
 // 画布
 class Sky extends CustomPainter {
-  Sky({this.of, this.dx, this.rd, this.tt, this.co,this.tx});
+  Sky({this.of, this.dx, this.rd, this.tt, this.co, this.tx});
   var of;
   var dx;
   var rd;
@@ -20,7 +20,7 @@ class Sky extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var rect = Rect.fromLTRB(0.0, 0.0, 375.0, 700.0);
     var rectline = Rect.zero;
-    
+
     var gradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomLeft,
@@ -122,10 +122,23 @@ class _ShopScreenState extends State<ShopScreen>
   double tx = 700.0;
   Color co = Colors.green;
 
-  var user;
+  // var user;
   var istop = true;
 
-  Color topColor = Colors.green;
+  Color topColor = Color.fromRGBO(0,87,55,0.7);
+
+  double w1 = 100.0;
+  double w2 = 60.0;
+  double w3 = 60.0;
+  double w4 = 60.0;
+
+  int flag = 1;
+  void init() {
+    w1 = 60.0;
+    w2 = 60.0;
+    w3 = 60.0;
+    w4 = 60.0;
+  }
 
   @override
   void initState() {
@@ -140,15 +153,17 @@ class _ShopScreenState extends State<ShopScreen>
         controller.reset();
         controller.forward();
         istop = true;
-        co = Colors.green;
+        topColor = Color.fromRGBO(0,87,55,1);
+        co = Color.fromRGBO(0,87,55,0.7);
       }
       if (pix == 0) {
         print('到底部了');
         controller.reset();
-        tt= 300.0;
+        tt = 300.0;
         tx = 280.0;
         controller.forward();
         istop = false;
+        topColor = Color.fromRGBO(0,87,55,0.7);
         // co = Colors.green;
       }
     });
@@ -161,14 +176,14 @@ class _ShopScreenState extends State<ShopScreen>
           if (tt == 300.0) {
             // topColor = Colors.green;
           }
-          if (tx >= 700.0) {
+          if (tx >= 730.0) {
             return;
           }
           of++;
           rd = rd - 0.15;
           tt = tt + 10;
-          tx = tx+8;
-          print(tx);
+          tx = tx + 8;
+          // print(tx);
         } else {
           if (tt == 0) {
             return;
@@ -176,8 +191,8 @@ class _ShopScreenState extends State<ShopScreen>
           of--;
           rd = rd + 0.15;
           tt = tt - 10;
-          tx = tx-7;
-           print(tx);
+          tx = tx - 7;
+          // print(tx);
         }
         setState(() {});
       });
@@ -189,12 +204,13 @@ class _ShopScreenState extends State<ShopScreen>
     return Scaffold(
         body: Listener(
             onPointerDown: (event) {
-              user = event.position;
+              // user = event.position;
               // print(user.dx);
-              dx = user.dx;
+              // dx = user.dx;
+              // 可监听到listview的触摸点
             },
             child: CustomPaint(
-              painter: Sky(of: of, dx: dx, rd: rd, tt: tt, co: co,tx:tx),
+              painter: Sky(of: of, dx: dx, rd: rd, tt: tt, co: co, tx: tx),
               child: NestedScrollView(
                   controller: _nestcontroller,
                   headerSliverBuilder:
@@ -221,7 +237,68 @@ class _ShopScreenState extends State<ShopScreen>
                                         physics:
                                             const AlwaysScrollableScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
-                                        children: buildList(),
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              init();
+                                              setState(() {
+                                                w1 = 100.0;
+                                                flag = 1;
+                                              });
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(10.0),
+                                              width: w1,
+                                              child: Image.network(
+                                                  'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              init();
+                                              setState(() {
+                                                w2 = 100.0;
+                                                flag = 2;
+                                              });
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(10.0),
+                                              width: w2,
+                                              child: Image.network(
+                                                  'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              init();
+                                              setState(() {
+                                                w3 = 100.0;
+                                                 flag = 3;
+                                              });
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(10.0),
+                                              width: w3,
+                                              child: Image.network(
+                                                  'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              init();
+                                              setState(() {
+                                                w4 = 100.0;
+                                                 flag = 4;
+                                              });
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(10.0),
+                                              width: w4,
+                                              child: Image.network(
+                                                  'http://pic.zhutou.com/html/UploadPic/2010-6/2010664120959.jpg'),
+                                            ),
+                                          ),
+                                        ],
                                         controller: _controller,
                                       ),
                                     )
@@ -231,7 +308,9 @@ class _ShopScreenState extends State<ShopScreen>
                     ];
                   },
                   body: Container(
-                      margin: EdgeInsets.only(top: 100.0), child: ShopMain())),
+                      margin: EdgeInsets.only(top: 50.0), child:
+                        ShopMain(flag:flag)
+                      )),
               // AnimatedBuilder(
               //   animation: animation,
               //   builder: (context, child) => Container(

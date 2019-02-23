@@ -10,7 +10,8 @@ class MidTab extends StatelessWidget{
         crossAxisCount: 2,
         childAspectRatio:0.8,
         children:[
-          Text('mid')
+          Cardd(),
+          Cardd(),
         ],
     );
     }

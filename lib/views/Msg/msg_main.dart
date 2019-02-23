@@ -12,7 +12,7 @@ class MsgMain extends StatelessWidget {
         background: Container(
         margin: EdgeInsets.only(top:10.0),
         decoration:BoxDecoration(
-          gradient:LinearGradient(colors: [Colors.yellow,Colors.red],stops:[0.1,0.9])
+          gradient:LinearGradient(colors: [Colors.white10,Colors.black12],stops:[0.1,0.9])
         ),
         child: Flex(
           mainAxisAlignment:MainAxisAlignment.end,
@@ -27,14 +27,16 @@ class MsgMain extends StatelessWidget {
        
         ),
         onDismissed:(index) {
-          // items.removeAt(index);
           print(index);
         },
         child:
          Container(
             margin: EdgeInsets.only(top:10.0),
-            color: Colors.amberAccent,
-            padding: EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+              color: Colors.white70,
+              border: Border.all(color: Colors.black12)
+            ),
+            padding: EdgeInsets.all(20.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,7 +44,7 @@ class MsgMain extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.only(right: 15.0),
-                        child: CircleAvatar(),
+                        child: CircleAvatar(backgroundColor: Color.fromRGBO(0,87,55,0.7)),
                       ),
                       Column(
                         children: <Widget>[Text(text), Text(text)],

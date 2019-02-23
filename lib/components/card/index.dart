@@ -5,7 +5,7 @@ class Cardd extends StatelessWidget{
   Widget build(BuildContext context) {
       return Container(
           color:Colors.white,
-          height: 10.0,
+          margin: EdgeInsets.all(1.0),
           child:Column(
             children: <Widget>[
               Image.network('http://pic1.win4000.com/wallpaper/e/526c9f99ce1e9.jpg',height: 140.0,),

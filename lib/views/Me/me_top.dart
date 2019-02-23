@@ -33,6 +33,8 @@ class MeTop extends StatelessWidget {
           margin: EdgeInsets.only(right: 30.0),
           child: CircleAvatar(
             radius: 43.0,
+            backgroundColor: Color.fromRGBO(0,87,55,0.7)
+
           ),
         ),
         Expanded(
