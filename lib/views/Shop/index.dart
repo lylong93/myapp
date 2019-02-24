@@ -229,7 +229,7 @@ class _ShopScreenState extends State<ShopScreen>
                                 child: Column(
                                   children: <Widget>[
                                     AppBar(
-                                        title: Text("this is ok"),
+                                        title: Text("shop"),
                                         elevation: 0.0,
                                         backgroundColor: Colors.transparent),
                                     Expanded(
