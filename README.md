@@ -1,26 +1,13 @@
 # myapp
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
-# myapp
-
-
-# 命名规范
-
-#防止与内部组件冲突
-
-## 公共组件 my+组件名 例如 myCard
-
-## 组件内名  父级文件+组件名 例如 LeftCard
+一个的基于flutter的app
+（自己学习和玩耍的例子）
+## 简单功能
+* 首页有网络请求，后台接口使用easy-mock 模拟生成,
+上拉加载，下拉刷新 (没有本地缓存以及上拉动画)
+* 第二页简单canvas动画配合折叠组件
+##
+![](https://user-gold-cdn.xitu.io/2019/2/24/1691f830761df852?w=648&h=1252&f=png&s=270001) 
+![](http://g.recordit.co/PUDsP3BLkA.gif)
+![](https://user-gold-cdn.xitu.io/2019/2/24/1691f836863f67ad?w=646&h=1240&f=png&s=362612))
+![](http://g.recordit.co/tp1v10E6UX.gif)

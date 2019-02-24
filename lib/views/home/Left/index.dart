@@ -31,7 +31,7 @@ class _HomeLeftState extends State<HomeLeft> {
   getdata() async {
     var jsonString = await HomeApi.getTest();
     var data = jsonString['list'];
-    // childList..add(Recomm());
+
     data.forEach((item) {
       var _item = new HomeItem.fromJson(item);
       childList..add(_item);
