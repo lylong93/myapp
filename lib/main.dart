@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return Scaffold(
         body: views[_lastSelected],
         bottomNavigationBar:FABBottomAppBar(
-          centerItemText:'center',
+          // centerItemText:'center',
           color: Colors.grey,
           notchedShape: CircularNotchedRectangle(),
           selectedColor: Color.fromRGBO(0,87,55,0.7),
